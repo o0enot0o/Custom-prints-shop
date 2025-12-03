@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Custom Prints Shop — Маркетплейс</title>
+  <link rel="stylesheet" href="main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header__inner">
+      <div class="logo">CUSTOM PRINTS SHOP</div>
+      <nav class="nav">
+        <a href="#" class="nav__link">Каталог</a>
+        <a href="#" class="nav__link">Про нас</a>
+        <a href="#" class="nav__link">Доставка</a>
+        <a href="#" class="nav__link">Контакти</a>
+      </nav>
+      <div class="search">
+        <input type="text" placeholder="Пошук шаблонів" class="search__input" />
+      </div>
+      <div class="header__actions">
+        <a href="#" class="icon-link">Профіль</a>
+        <a href="#" class="icon-link">Вподобайки</a>
+        <a href="#" class="icon-link cart">Кошик <span class="cart-count">3</span></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CATEGORY SECTION -->
+  <section class="categories-section">
+    <div class="container">
+
+      <!-- Buttons (Left / Right) -->
+      <button class="cat-btn left-btn">&#10094;</button>
+      <button class="cat-btn right-btn">&#10095;</button>
+
+      <!-- Scroll List -->
+      <div class="categories-wrapper" id="categoriesList">
+
+        <!-- Category items -->
+        <div class="category-item">Плакати</div>
+        <div class="category-item">Футболки</div>
+        <div class="category-item">Кружки</div>
+        <div class="category-item">Стікери</div>
+        <div class="category-item">Чохли</div>
+        <div class="category-item">Постери</div>
+        <div class="category-item">Картини</div>
+        <div class="category-item">Подушки</div>
+        <div class="category-item">Брелоки</div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT GRID -->
+  <section class="product-section">
+    <div class="container">
+      <h2 class="product-title">Товари з категорії: Плакати</h2>
+
+      <div class="product-row" id="productRow">
+        <!-- JS вставит карточки сюда -->
+      </div>
+    </div>
+  </section>
+
+  <script src="main.js"></script>
+</body>
+</html>
