@@ -15,33 +15,47 @@
       <div class="logo">CUSTOM PRINTS SHOP</div>
       <nav class="nav">
         <a href="#" class="nav__link">Каталог</a>
-        <a href="#" class="nav__link">Про нас</a>
-        <a href="#" class="nav__link">Доставка</a>
+        <a href="#" class="nav__link js-about">Про нас</a>
         <a href="#" class="nav__link">Контакти</a>
       </nav>
-      <div class="search">
-        <input type="text" placeholder="Пошук шаблонів" class="search__input" />
-      </div>
+
       <div class="header__actions">
         <a href="#" class="icon-link">Профіль</a>
         <a href="#" class="icon-link">Вподобайки</a>
-        <a href="#" class="icon-link cart">Кошик <span class="cart-count">3</span></a>
+
+        <!-- КОРЗИНА -->
+        <div class="cart-wrapper">
+          <a href="#" class="icon-link cart-icon js-cart-open">
+            Кошик <span class="cart-count">0</span>
+          </a>
+
+          <div class="mini-cart" id="miniCart">
+            <div class="mini-cart__header">
+              <h3>Кошик</h3>
+              <button class="mini-cart__close js-cart-close">×</button>
+            </div>
+            <div class="mini-cart__items" id="cartItems"></div>
+            <div class="mini-cart__footer">
+              <div class="cart-total">
+                <span>Разом (обране):</span>
+                <strong id="cartTotal">0.00 $</strong>
+              </div>
+              <button class="checkout-btn">Оформити замовлення</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- CATEGORY SECTION -->
+  <!-- КАТЕГОРІЇ -->
   <section class="categories-section">
     <div class="container">
-
-      <!-- Buttons (Left / Right) -->
-      <button class="cat-btn left-btn">&#10094;</button>
-      <button class="cat-btn right-btn">&#10095;</button>
-
-      <!-- Scroll List -->
+      <button class="cat-btn left-btn"></button>
+      <button class="cat-btn right-btn"></button>
       <div class="categories-wrapper" id="categoriesList">
 
-        <!-- Category items -->
+        
         <div class="category-item">Плакати</div>
         <div class="category-item">Футболки</div>
         <div class="category-item">Кружки</div>
@@ -56,17 +70,88 @@
     </div>
   </section>
 
-  <!-- PRODUCT GRID -->
+  <!-- ТОВАРИ -->
   <section class="product-section">
     <div class="container">
       <h2 class="product-title">Товари з категорії: Плакати</h2>
-
-      <div class="product-row" id="productRow">
-        <!-- JS вставит карточки сюда -->
-      </div>
+      <div class="product-row" id="productRow"></div>
     </div>
   </section>
 
+  <!-- МОДАЛКА ПРО НАС -->
+  <div class="modal-overlay" id="aboutModal">
+    <div class="modal-content">
+      <button class="modal-close">×</button>
+      <h2>Про нас</h2>
+      <p>Тут буде текст про магазин<br>Поки що це просто заглушка.</p>
+    </div>
+  </div>
+
   <script src="main.js"></script>
+
+<!-- ПОВНОЦІННА СТОРІНКА ТОВАРУ -->
+<div class="product-page-overlay" id="productPage">
+  <div class="product-page">
+    <button class="product-page__close">×</button>
+
+    <div class="product-page__grid">
+      <!-- Ліворуч — фото -->
+      <div class="product-page__gallery">
+        <div class="product-page__main-img" id="mainImg"></div>
+        <div class="product-page__thumbs">
+          <div class="thumb active"></div>
+          <div class="thumb"></div>
+          <div class="thumb"></div>
+        </div>
+      </div>
+
+      <!-- Праворуч — інформація -->
+      <div class="product-page__info">
+        <h1 id="pageTitle">Дитячий плакат</h1>
+        <div class="product-page__price" id="pagePrice">5.99 $</div>
+
+        <div class="product-page__actions">
+          <button class="buy-btn big">Купити зараз</button>
+          <button class="add-to-cart-btn" id="addToCartFull">Додати в кошик</button>
+        </div>
+
+        <div class="product-page__desc">
+          <h3>Опис товару</h3>
+          <p>Яскравий дитячий плакат з улюбленими героями. Друк на преміум-папері 250 г/м², розмір A3 (30×42 см). Ідеально підходить для дитячої кімнати. Стійкі фарби, без запаху.</p>
+        </div>
+
+        <div class="product-page__seller">
+          <h3>Продавець</h3>
+          <div class="seller">
+            <img src="https://i.pravatar.cc/60?img=12" alt="seller-avatar">
+            <div>
+              <div class="seller-name">PrintMaster Studio</div>
+              <div class="seller-rating">4.9 ★ (1273 відгуки)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-page__reviews">
+          <h3>Відгуки (24)</h3>
+          <div class="review">
+            <strong>Олена</strong> <span>5 ★</span><br>
+            Дуже сподобалось! Друк чіткий, кольори яскраві. Дитина в захваті!
+          </div>
+          <div class="review">
+            <strong>Максим</strong> <span>5 ★</span><br>
+            Замовляв два — прийшли за 2 дні. Рекомендую!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Схожі товари -->
+    <div class="similar-products">
+      <h3>Схожі товари</h3>
+      <div class="product-row" id="similarProducts"></div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
