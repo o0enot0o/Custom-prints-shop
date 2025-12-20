@@ -221,8 +221,8 @@ body {
   height: 40px;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* що це, як мені тебе виправити?!?!? */
-  -webkit-box-orient: vertical;
+  line-clamp: 2; /* що це, як мені тебе виправити?!?!? */
+  box-orient: vertical;
 }
 
 /* Спливаюча підсказка */
