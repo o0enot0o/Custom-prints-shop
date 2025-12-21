@@ -85,7 +85,7 @@ function renderProducts(category) {
     card.className = "product-card";
 
     card.innerHTML = `
-      <div class="product-img" style="background-image:ur[](https://picsum.photos/300/400?random=${Math.random()})"></div>
+      <div class="product-img" style="background-image: ur[](https://picsum.photos/300/400?random=${Math.random()})"></div>
       <div class="product-info">
         <div class="product-name">${p.name}</div>
         <p class="product-price">${p.price.toFixed(2)}$</p>
@@ -180,7 +180,7 @@ function updateCart() {
     div.className = "mini-cart__item";
     div.innerHTML = `
       <input type="checkbox" class="mini-cart__checkbox" data-index="${i}" ${item.checked ? 'checked' : ''}>
-      <div class="mini-cart__img" style="background-image:ur[](https://picsum.photos/100/100?random=${i})"></div>
+      <div class="mini-cart__img" style="background-image: ur[](https://picsum.photos/100/100?random=${i})"></div>
       <div class="mini-cart__info">
         <div class="mini-cart__name">${item.name}</div>
         <div class="mini-cart__price">${(item.price * item.qty).toFixed(2)} $</div>
@@ -228,7 +228,7 @@ function openProductPage(product) {
     const c = document.createElement("div");
     c.className = "product-card";
     c.innerHTML = `
-      <div class="product-img" style="background-image:ur[](https://picsum.photos/300/400?random=${Math.random()})"></div>
+      <div class="product-img" style="background-image: ur[](https://picsum.photos/300/400?random=${Math.random()})"></div>
       <div class="product-info">
         <div class="product-name">${p.name}</div>
         <p class="product-price">${p.price.toFixed(2)}$</p>
@@ -271,6 +271,103 @@ document.getElementById("addToCartFull").addEventListener("click", () => {
   const existing = cart.find(i => i.name === name);
   if (existing) existing.qty++; else cart.push({name, price, qty:1, checked:true});
   updateCart();
+});
+
+// ОФОРМЛЕННЯ ЗАМОВЛЕННЯ
+const checkoutModal = document.getElementById("checkoutModal");
+const checkoutBtn = document.getElementById("checkoutBtn");
+const checkoutClose = document.querySelector(".checkout-close");
+const checkoutItemsContainer = document.getElementById("checkoutItems");
+const checkoutSubtotal = document.getElementById("checkoutSubtotal");
+const checkoutGrandTotal = document.getElementById("checkoutGrandTotal");
+const submitOrderBtn = document.querySelector(".submit-order-btn");
+
+// Відкрити модалку
+checkoutBtn.addEventListener("click", () => {
+  if (cart.filter(item => item.checked).length === 0) {
+    alert("Оберіть товари для замовлення!");
+    return;
+  }
+  updateCheckoutSummary();
+  checkoutModal.classList.add("active");
+  document.body.style.overflow = "hidden";
+});
+
+// Закрити модалку
+checkoutClose.addEventListener("click", () => {
+  checkoutModal.classList.remove("active");
+  document.body.style.overflow = "";
+});
+checkoutModal.addEventListener("click", e => {
+  if (e.target === checkoutModal) {
+    checkoutModal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && checkoutModal.classList.contains("active")) {
+    checkoutModal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+});
+
+// Оновити сумарі в чекауті
+function updateCheckoutSummary() {
+  checkoutItemsContainer.innerHTML = "";
+  let total = 0;
+  const checkedItems = cart.filter(item => item.checked);
+  checkedItems.forEach(item => {
+    const div = document.createElement("div");
+    div.className = "checkout-item";
+    div.innerHTML = `
+      <span>${item.name} x ${item.qty}</span>
+      <span>${(item.price * item.qty).toFixed(2)} $</span>
+    `;
+    checkoutItemsContainer.appendChild(div);
+    total += item.price * item.qty;
+  });
+  checkoutSubtotal.textContent = total.toFixed(2) + " $";
+  checkoutGrandTotal.textContent = total.toFixed(2) + " $"; // Доставка не обчислена, просто текст
+}
+
+// Логіка для оплати: показ суб-опцій
+const paymentRadios = document.querySelectorAll('input[name="payment"]');
+const nonCashOptions = document.querySelector(".non-cash-options");
+paymentRadios.forEach(radio => {
+  radio.addEventListener("change", () => {
+    nonCashOptions.style.display = radio.value === "non-cash" ? "block" : "none";
+  });
+});
+
+// Підтвердити замовлення (просто алерт для прикладу)
+submitOrderBtn.addEventListener("click", () => {
+  const fullName = document.getElementById("fullName").value;
+  const phone = document.getElementById("phone").value;
+  const email = document.getElementById("email").value;
+  const city = document.getElementById("city").value;
+  const postOffice = document.getElementById("postOffice").value;
+  const payment = document.querySelector('input[name="payment"]:checked').value;
+  let nonCashType = "";
+  if (payment === "non-cash") {
+    const selected = document.querySelector('input[name="non-cash-type"]:checked');
+    if (!selected) {
+      alert("Оберіть тип безготівкового розрахунку!");
+      return;
+    }
+    nonCashType = selected.value;
+  }
+
+  if (!fullName || !phone || !email || !city || !postOffice) {
+    alert("Заповніть всі поля!");
+    return;
+  }
+
+  alert(`Замовлення підтверджено!\nПІБ: ${fullName}\nТелефон: ${phone}\nEmail: ${email}\nМісто: ${city}\nВідділення: ${postOffice}\nОплата: ${payment}${nonCashType ? ` (${nonCashType})` : ""}`);
+  // Очистити кошик або надіслати на сервер
+  cart = cart.filter(item => !item.checked);
+  updateCart();
+  checkoutModal.classList.remove("active");
+  document.body.style.overflow = "";
 });
 
 // Ініціалізація

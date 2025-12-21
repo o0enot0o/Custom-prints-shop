@@ -40,7 +40,7 @@
                 <span>Разом (обране):</span>
                 <strong id="cartTotal">0.00 $</strong>
               </div>
-              <button class="checkout-btn">Оформити замовлення</button>
+              <button class="checkout-btn" id="checkoutBtn">Оформити замовлення</button>
             </div>
           </div>
         </div>
@@ -86,8 +86,6 @@
       <p>Тут буде текст про магазин<br>Поки що це просто заглушка.</p>
     </div>
   </div>
-
-  <script src="main.js"></script>
 
 <!-- ПОВНОЦІННА СТОРІНКА ТОВАРУ -->
 <div class="product-page-overlay" id="productPage">
@@ -152,6 +150,82 @@
     </div>
   </div>
 </div>
+
+<!-- МОДАЛКА ОФОРМЛЕННЯ ЗАМОВЛЕННЯ -->
+<div class="checkout-overlay" id="checkoutModal">
+  <div class="checkout-content">
+    <button class="checkout-close">×</button>
+    <h2>Оформлення замовлення</h2>
+    <div class="checkout-grid">
+      <!-- Ліва частина: Форми -->
+      <div class="checkout-left">
+        <!-- Контактна інформація -->
+        <div class="checkout-block">
+          <h3>Контактна інформація</h3>
+          <input type="text" placeholder="ПІБ одержувача" id="fullName" required>
+          <input type="tel" placeholder="Номер телефону" id="phone" required>
+          <input type="email" placeholder="Email" id="email" required>
+        </div>
+
+        <!-- Оплата -->
+        <div class="checkout-block">
+          <h3>Оплата</h3>
+          <label>
+            <input type="radio" name="payment" value="cash" checked>
+            Готівкою при одержанні
+          </label>
+          <label>
+            <input type="radio" name="payment" value="card">
+            Карткою при одержанні
+          </label>
+          <label>
+            <input type="radio" name="payment" value="non-cash">
+            Безготівковий розрахунок
+          </label>
+          <div class="non-cash-options" style="display: none; margin-left: 20px;">
+            <label>
+              <input type="radio" name="non-cash-type" value="privat24">
+              Приват24
+            </label>
+            <label>
+              <input type="radio" name="non-cash-type" value="visa-master">
+              Visa/Mastercard
+            </label>
+            <label>
+              <input type="radio" name="non-cash-type" value="liqpay">
+              LiqPay
+            </label>
+            <label>
+              <input type="radio" name="non-cash-type" value="credit">
+              Кредит та оплата частинами
+            </label>
+          </div>
+        </div>
+
+        <!-- Поштове відділення -->
+        <div class="checkout-block">
+          <h3>Поштове відділення</h3>
+          <input type="text" placeholder="Місто" id="city" required>
+          <input type="text" placeholder="Номер відділення" id="postOffice" required>
+        </div>
+      </div>
+
+      <!-- Права частина: Список товарів та підсумок -->
+      <div class="checkout-right">
+        <h3>Ваше замовлення</h3>
+        <div class="checkout-items" id="checkoutItems"></div>
+        <div class="checkout-total">
+          <div>Разом за товари: <strong id="checkoutSubtotal">0.00 $</strong></div>
+          <div>Доставка: <em>за тарифами перевізника</em></div>
+          <div class="grand-total">До сплати: <strong id="checkoutGrandTotal">0.00 $</strong></div>
+        </div>
+        <button class="submit-order-btn">Підтвердити замовлення</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="main.js"></script>
 
 </body>
 </html>
