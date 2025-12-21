@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Редактор товарів</title>
+<link rel="stylesheet" href="main.css">
+</head>
+<body>
+<div class="editor-container">
+
+  <!-- Ліва панель: шаблони товарів -->
+  <aside class="sidebar-left">
+    <h3>Шаблони товарів</h3>
+    <div class="templates-grid" id="templatesGrid"></div>
+  </aside>
+
+  <!-- Поле редагування -->
+  <main class="editor-area">
+    <div class="contentWrapper">
+      <div id="editField" class="edit-field"></div>
+    </div>
+  </main>
+
+  <!-- Права панель: інструменти -->
+  <aside class="sidebar-right">
+
+    <!-- Undo / Redo -->
+    <button id="undoBtn">⟲</button>
+    <button id="redoBtn">⟳</button>
+
+    <!-- Додати текст -->
+    <button id="addTextBtn">Додати текст</button>
+    <div id="textSettings" class="popup hidden">
+      <label>Шрифт:
+        <select id="fontSelect">
+          <option value="Arial">Arial</option>
+          <option value="Verdana">Verdana</option>
+          <option value="Times New Roman">Times New Roman</option>
+        </select>
+      </label>
+      <label>Колір тексту: <input type="color" id="textColor" value="#000000"></label>
+      <label>Розмір: <input type="number" id="fontSize" value="24" min="8" max="200"></label>
+    </div>
+
+    <!-- Додати картинку -->
+    <button id="addImageBtn">Додати картинку</button>
+
+    <!-- Емодзі -->
+    <button id="emojiBtn">Емодзі</button>
+    <div id="emojiPanel" class="popup hidden"></div>
+
+    <!-- Кисть -->
+    <button id="brushBtn">Кисть</button>
+
+  </aside>
+
+</div>
+<script src="main.js"></script>
+</body>
+</html>

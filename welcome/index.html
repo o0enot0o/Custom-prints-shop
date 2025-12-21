@@ -8,71 +8,107 @@
 </head>
 <body>
 
-  <div class="logo-block">
-    <div class="logo">CUSTOM PRINTS SHOP</div>
-  </div>
+  <!-- Header з паралаксом -->
+  <header class="hero-header">
+    <div class="parallax-bg bg-hero"></div>
+    <div class="overlay"></div>
+    <div class="header-content">
+      <h1 class="logo-title">CUSTOM PRINTS SHOP</h1>
+      <p class="logo-subtitle">Твій майданчик для кастомних принтів</p>
+    </div>
+  </header>
 
-  <div class="title-block">
-    <h1>Реєстрація</h1>
-    <p class="login-link">
-      Вже маєте акаунт? <a href="#">Увійти</a>
-    </p>
-  </div>
+  <!-- Кроки -->
+  <section class="steps-section">
+    <div class="container">
+      <div class="steps">
+        <div class="step">
+          <div class="step-circle">1</div>
+          <h3>Створення</h3>
+          <p>Завантажуй свої дизайни та створюй унікальні принти</p>
+        </div>
+        <div class="step">
+          <div class="step-circle">2</div>
+          <h3>Продаж</h3>
+          <p>Розміщуй на продаж і заробляй на кожному замовленні</p>
+        </div>
+        <div class="step">
+          <div class="step-circle">3</div>
+          <h3>Купівля</h3>
+          <p>Обирай з тисяч дизайнів і замовляй доставку</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="form-block">
-    <form id="registerForm">
+  <!-- Features з fade-in -->
+  <section class="features-section">
+    <div class="parallax-bg bg-features"></div>
+    <div class="overlay"></div>
+    <div class="container fade-in">
+      <h2>Дешеві й якісні принти</h2>
+      <p>Найкраща якість друку за доступними цінами. Швидка доставка по всій Україні.</p>
+    </div>
+  </section>
 
-      <div class="input-group">
-        <label>Ел. адреса</label>
-        <input type="email" placeholder="example@gmail.com" required>
+  <!-- Реєстрація / Вхід -->
+  <section class="register-section">
+    <div class="container">
+      <div class="title-block">
+        <h2 id="form-title">Реєстрація</h2>
+        <p class="switch-link">
+          <span id="switch-text">Вже маєте акаунт?</span>
+          <a href="#" id="switch-link">Увійти</a>
+        </p>
       </div>
 
-      <div class="input-group">
-        <label>Підтвердьте ел. адресу</label>
-        <input type="email" placeholder="example@gmail.com" required>
+      <form id="authForm" class="form-block">
+        <div class="input-row email-row">
+          <label>Ел. адреса</label>
+          <input type="email" id="email1" placeholder="example@gmail.com" required>
+        </div>
+
+        <div class="input-row email-confirm-row">
+          <label>Підтвердьте ел. адресу</label>
+          <input type="email" id="email2" placeholder="example@gmail.com" required>
+        </div>
+
+        <div class="input-row password-row">
+          <label>Виберіть пароль</label>
+          <input type="password" id="pass1" placeholder="Мінімум 6 символів" required>
+        </div>
+
+        <div class="input-row password-confirm-row">
+          <label>Підтвердьте пароль</label>
+          <input type="password" id="pass2" placeholder="Повторіть пароль" required>
+        </div>
+
+        <button type="submit" id="submit-btn" class="btn-submit">Зареєструватися</button>
+      </form>
+
+      <div class="terms-block">
+        <p id="terms-text">
+          * Реєструючись, ви приймаєте наші
+          <a href="legal/terms.html">Умови використання</a> і
+          <a href="legal/privacy.html">Політику конфіденційності</a>.
+        </p>
       </div>
+    </div>
+  </section>
 
-      <div class="input-group">
-        <label>Виберіть пароль</label>
-        <input type="password" required>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>Контакти: +380 (XX) XXX-XX-XX | Київ, Україна</p>
+      <p>email: info@customprintsshop.ua</p>
+      <div class="social-links">
+        <a href="#">Instagram</a> | 
+        <a href="#">Facebook</a> | 
+        <a href="#">Telegram</a>
       </div>
-
-      <div class="input-group">
-        <label>Підтвердьте пароль</label>
-        <input type="password" required>
-      </div>
-
-      <div class="social-block">
-        <button type="button" class="btn-social btn-google">
-          <span class="icon-wrapper">
-            <img src="https://www.google.com/favicon.ico" alt="Google" class="social-icon">
-          </span>
-          Продовжити через Google
-        </button>
-
-        <button type="button" class="btn-social btn-facebook">
-          <span class="icon-wrapper">
-            <img src="https://static.xx.fbcdn.net/rsrc.php/yo/r/iRmz9lCMBD2.ico" alt="Facebook" class="social-icon">
-          </span>
-          Продовжити через Facebook
-        </button>
-      </div>
-
-    </form>
-  </div>
-
-  <div class="terms-block">
-    <p>
-      * Реєструючись, ви приймаєте наші <a href="#">Умови використання</a> і 
-      <a href="#">Політику конфіденційності</a>.<br>
-      Цей сайт захищено reCAPTCHA Enterprise. До нього застосовуються 
-      <a href="#">Політика конфіденційності</a> Google та 
-      <a href="#">Загальні положення та умови</a>.
-    </p>
-  </div>
+    </div>
+  </footer>
 
   <script src="main.js"></script>
 </body>
 </html>
-
-<!-- це 1 меню при заході на сайт, поки не під'єднано PUBLIC ON VERSEL, NOW!!! -->
