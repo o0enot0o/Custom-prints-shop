@@ -30,20 +30,20 @@ window.addEventListener("load", updateFade);
 // ДАНІ ТОВАРІВ — нормальні назви
 const productsData = {
   "Плакати": [
-    { name: "Мотиваційний плакат «Never Give Up»", price: 8.99 },
-    { name: "Плакат з котиками", price: 7.49 },
-    { name: "Мінімалістичний постер «Гори»", price: 9.99 },
-    { name: "Аніме-постер «Attack on Titan»", price: 11.99 },
-    { name: "Ретро-плакат 80-х", price: 8.49 }
+    { name: "Мотиваційний плакат «Never Give Up»", price: 3.49 },
+    { name: "Плакат з котиком", price: 2.32 },
+    { name: "Мінімалістичний постер «Гори»", price: 3.56 },
+    { name: "Мінімалістичний постер - Сушена трава пампаси", price: 3.27 },
+    { name: "Плакат Minecraft - Pictograft", price: 2.49 }
   ],
   "Футболки": [
-    { name: "Футболка «I Paused My Game»", price: 19.99 },
-    { name: "Футболка з мемом «This is Fine»", price: 18.99 },
-    { name: "Оверсайз «Minimal Cat»", price: 22.99 }
+    { name: "Футболка «I Paused My Game»", price: 15.99 },
+    { name: "Футболка з мемом «This is Fine»", price: 13.54 },
+    { name: "Оверсайз «Minimal Cat»", price: 14.79 }
   ],
   "Кружки": [
-    { name: "Кружка «Кодую на каві»", price: 12.99 },
-    { name: "Чашка з єдинорогом", price: 14.99 }
+    { name: "Чашка Кава завантаження", price: 5.67 },
+    { name: "Чашка з посланням", price: 4.99 }
   ],
   "Стікери": [
     { name: "Набір стікерів «Programmer Life»", price: 4.99 },
