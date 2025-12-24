@@ -17,6 +17,7 @@
         <a href="#" class="nav__link">Каталог</a>
         <a href="#" class="nav__link js-about">Про нас</a>
         <a href="#" class="nav__link">Контакти</a>
+        <a href="#" class="nav__link js-editor-open">Редактор</a> <!-- НОВА КНОПКА -->
       </nav>
 
       <div class="header__actions">
@@ -54,8 +55,6 @@
       <button class="cat-btn left-btn"></button>
       <button class="cat-btn right-btn"></button>
       <div class="categories-wrapper" id="categoriesList">
-
-        
         <div class="category-item">Плакати</div>
         <div class="category-item">Футболки</div>
         <div class="category-item">Кружки</div>
@@ -65,7 +64,6 @@
         <div class="category-item">Картини</div>
         <div class="category-item">Подушки</div>
         <div class="category-item">Брелоки</div>
-
       </div>
     </div>
   </section>
@@ -87,145 +85,135 @@
     </div>
   </div>
 
-<!-- ПОВНОЦІННА СТОРІНКА ТОВАРУ -->
-<div class="product-page-overlay" id="productPage">
-  <div class="product-page">
-    <button class="product-page__close">×</button>
-
-    <div class="product-page__grid">
-      <!-- Ліворуч — фото -->
-      <div class="product-page__gallery">
-        <div class="product-page__main-img" id="mainImg"></div>
-        <div class="product-page__thumbs">
-          <div class="thumb active"></div>
-          <div class="thumb"></div>
-          <div class="thumb"></div>
-        </div>
+  <!-- РЕДАКТОР ДИЗАЙНУ -->
+  <div class="modal-overlay" id="editorModal">
+    <div class="modal-content editor-modal">
+      <button class="modal-close js-editor-close">×</button>
+      <h2>Редактор дизайну</h2>
+      <div class="editor-tools">
+        <button id="clearCanvas">Очистити</button>
+        <button id="saveDesign">Зберегти</button>
       </div>
+      <canvas id="designCanvas" width="600" height="600"></canvas>
+      <p>Малюйте мишкою, щоб створити свій дизайн!</p>
+    </div>
+  </div>
 
-      <!-- Праворуч — інформація -->
-      <div class="product-page__info">
-        <h1 id="pageTitle">Дитячий плакат</h1>
-        <div class="product-page__price" id="pagePrice">5.99 $</div>
+  <!-- МОДАЛКА КУПІВЛІ КАСТОМНОГО ТОВАРУ -->
+  <div class="modal-overlay" id="customProductModal">
+    <div class="modal-content">
+      <button class="modal-close js-custom-close">×</button>
+      <h2>Ваш кастомний дизайн</h2>
+      <div class="custom-preview">
+        <img id="savedDesignPreview" alt="Збережений дизайн" style="max-width:100%; border:1px solid #ddd; border-radius:12px;" />
+      </div>
+      <div class="custom-product-info">
+        <h3>Кастомний товар (ваш дизайн)</h3>
+        <p class="product-price">29.99 $</p>
+        <button class="buy-btn big" id="addCustomToCart">Додати в кошик</button>
+      </div>
+    </div>
+  </div>
 
-        <div class="product-page__actions">
-          <button class="buy-btn big">Купити зараз</button>
-          <button class="add-to-cart-btn" id="addToCartFull">Додати в кошик</button>
+  <!-- ПОВНОЦІННА СТОРІНКА ТОВАРУ -->
+  <div class="product-page-overlay" id="productPage">
+    <div class="product-page">
+      <button class="product-page__close">×</button>
+      <div class="product-page__grid">
+        <div class="product-page__gallery">
+          <div class="product-page__main-img" id="mainImg"></div>
+          <div class="product-page__thumbs">
+            <div class="thumb active"></div>
+            <div class="thumb"></div>
+            <div class="thumb"></div>
+          </div>
         </div>
-
-        <div class="product-page__desc">
-          <h3>Опис товару</h3>
-          <p>Яскравий дитячий плакат з улюбленими героями. Друк на преміум-папері 250 г/м², розмір A3 (30×42 см). Ідеально підходить для дитячої кімнати. Стійкі фарби, без запаху.</p>
-        </div>
-
-        <div class="product-page__seller">
-          <h3>Продавець</h3>
-          <div class="seller">
-            <img src="https://i.pravatar.cc/60?img=12" alt="seller-avatar">
-            <div>
-              <div class="seller-name">PrintMaster Studio</div>
-              <div class="seller-rating">4.9 ★ (1273 відгуки)</div>
+        <div class="product-page__info">
+          <h1 id="pageTitle">Дитячий плакат</h1>
+          <div class="product-page__price" id="pagePrice">5.99 $</div>
+          <div class="product-page__actions">
+            <button class="buy-btn big">Купити зараз</button>
+            <button class="add-to-cart-btn" id="addToCartFull">Додати в кошик</button>
+          </div>
+          <div class="product-page__desc">
+            <h3>Опис товару</h3>
+            <p>Яскравий дитячий плакат з улюбленими героями. Друк на преміум-папері 250 г/м², розмір A3 (30×42 см). Ідеально підходить для дитячої кімнати. Стійкі фарби, без запаху.</p>
+          </div>
+          <div class="product-page__seller">
+            <h3>Продавець</h3>
+            <div class="seller">
+              <img src="https://i.pravatar.cc/60?img=12" alt="seller-avatar">
+              <div>
+                <div class="seller-name">PrintMaster Studio</div>
+                <div class="seller-rating">4.9 ★ (1273 відгуки)</div>
+              </div>
+            </div>
+          </div>
+          <div class="product-page__reviews">
+            <h3>Відгуки (24)</h3>
+            <div class="review">
+              <strong>Олена</strong> <span>5 ★</span><br>
+              Дуже сподобалось! Друк чіткий, кольори яскраві. Дитина в захваті!
+            </div>
+            <div class="review">
+              <strong>Максим</strong> <span>5 ★</span><br>
+              Замовляв два — прийшли за 2 дні. Рекомендую!
             </div>
           </div>
         </div>
-
-        <div class="product-page__reviews">
-          <h3>Відгуки (24)</h3>
-          <div class="review">
-            <strong>Олена</strong> <span>5 ★</span><br>
-            Дуже сподобалось! Друк чіткий, кольори яскраві. Дитина в захваті!
-          </div>
-          <div class="review">
-            <strong>Максим</strong> <span>5 ★</span><br>
-            Замовляв два — прийшли за 2 дні. Рекомендую!
-          </div>
-        </div>
       </div>
-    </div>
-
-    <!-- Схожі товари -->
-    <div class="similar-products">
-      <h3>Схожі товари</h3>
-      <div class="product-row" id="similarProducts"></div>
-    </div>
-  </div>
-</div>
-
-<!-- МОДАЛКА ОФОРМЛЕННЯ ЗАМОВЛЕННЯ -->
-<div class="checkout-overlay" id="checkoutModal">
-  <div class="checkout-content">
-    <button class="checkout-close">×</button>
-    <h2>Оформлення замовлення</h2>
-    <div class="checkout-grid">
-      <!-- Ліва частина: Форми -->
-      <div class="checkout-left">
-        <!-- Контактна інформація -->
-        <div class="checkout-block">
-          <h3>Контактна інформація</h3>
-          <input type="text" placeholder="ПІБ одержувача" id="fullName" required>
-          <input type="tel" placeholder="Номер телефону" id="phone" required>
-          <input type="email" placeholder="Email" id="email" required>
-        </div>
-
-        <!-- Оплата -->
-        <div class="checkout-block">
-          <h3>Оплата</h3>
-          <label>
-            <input type="radio" name="payment" value="cash" checked>
-            Готівкою при одержанні
-          </label>
-          <label>
-            <input type="radio" name="payment" value="card">
-            Карткою при одержанні
-          </label>
-          <label>
-            <input type="radio" name="payment" value="non-cash">
-            Безготівковий розрахунок
-          </label>
-          <div class="non-cash-options" style="display: none; margin-left: 20px;">
-            <label>
-              <input type="radio" name="non-cash-type" value="privat24">
-              Приват24
-            </label>
-            <label>
-              <input type="radio" name="non-cash-type" value="visa-master">
-              Visa/Mastercard
-            </label>
-            <label>
-              <input type="radio" name="non-cash-type" value="liqpay">
-              LiqPay
-            </label>
-            <label>
-              <input type="radio" name="non-cash-type" value="credit">
-              Кредит та оплата частинами
-            </label>
-          </div>
-        </div>
-
-        <!-- Поштове відділення -->
-        <div class="checkout-block">
-          <h3>Поштове відділення</h3>
-          <input type="text" placeholder="Місто" id="city" required>
-          <input type="text" placeholder="Номер відділення" id="postOffice" required>
-        </div>
-      </div>
-
-      <!-- Права частина: Список товарів та підсумок -->
-      <div class="checkout-right">
-        <h3>Ваше замовлення</h3>
-        <div class="checkout-items" id="checkoutItems"></div>
-        <div class="checkout-total">
-          <div>Разом за товари: <strong id="checkoutSubtotal">0.00 $</strong></div>
-          <div>Доставка: <em>за тарифами перевізника</em></div>
-          <div class="grand-total">До сплати: <strong id="checkoutGrandTotal">0.00 $</strong></div>
-        </div>
-        <button class="submit-order-btn">Підтвердити замовлення</button>
+      <div class="similar-products">
+        <h3>Схожі товари</h3>
+        <div class="product-row" id="similarProducts"></div>
       </div>
     </div>
   </div>
-</div>
 
-<script src="main.js"></script>
+  <!-- МОДАЛКА ОФОРМЛЕННЯ ЗАМОВЛЕННЯ -->
+  <div class="checkout-overlay" id="checkoutModal">
+    <div class="checkout-content">
+      <button class="checkout-close">×</button>
+      <h2>Оформлення замовлення</h2>
+      <div class="checkout-grid">
+        <div class="checkout-left">
+          <div class="checkout-block">
+            <h3>Контактна інформація</h3>
+            <input type="text" placeholder="ПІБ одержувача" id="fullName" required>
+            <input type="tel" placeholder="Номер телефону" id="phone" required>
+            <input type="email" placeholder="Email" id="email" required>
+          </div>
+          <div class="checkout-block">
+            <h3>Оплата</h3>
+            <label><input type="radio" name="payment" value="cash" checked> Готівкою при одержанні</label>
+            <label><input type="radio" name="payment" value="card"> Карткою при одержанні</label>
+            <label><input type="radio" name="payment" value="non-cash"> Безготівковий розрахунок</label>
+            <div class="non-cash-options" style="display: none; margin-left: 20px;">
+              <label><input type="radio" name="non-cash-type" value="privat24"> Приват24</label>
+              <label><input type="radio" name="non-cash-type" value="visa-master"> Visa/Mastercard</label>
+              <label><input type="radio" name="non-cash-type" value="liqpay"> LiqPay</label>
+              <label><input type="radio" name="non-cash-type" value="credit"> Кредит та оплата частинами</label>
+            </div>
+          </div>
+          <div class="checkout-block">
+            <h3>Поштове відділення</h3>
+            <input type="text" placeholder="Місто" id="city" required>
+            <input type="text" placeholder="Номер відділення" id="postOffice" required>
+          </div>
+        </div>
+        <div class="checkout-right">
+          <h3>Ваше замовлення</h3>
+          <div class="checkout-items" id="checkoutItems"></div>
+          <div class="checkout-total">
+            <div>Разом за товари: <strong id="checkoutSubtotal">0.00 $</strong></div>
+            <div>Доставка: <em>за тарифами перевізника</em></div>
+            <div class="grand-total">До сплати: <strong id="checkoutGrandTotal">0.00 $</strong></div>
+          </div>
+          <button class="submit-order-btn">Підтвердити замовлення</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <script src="main.js"></script>
 </body>
 </html>

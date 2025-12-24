@@ -1,4 +1,4 @@
-// КАТЕГОРІЇ — скролл + кнопки стрілок
+// КАТЕГОРІЇ -- скролл + кнопки стрілок
 const list = document.getElementById("categoriesList");
 const leftBtn = document.querySelector(".left-btn");
 const rightBtn = document.querySelector(".right-btn");
@@ -27,47 +27,47 @@ function updateFade() {
 list.addEventListener("scroll", updateFade);
 window.addEventListener("load", updateFade);
 
-// ДАНІ ТОВАРІВ — нормальні назви
+// ДАНІ ТОВАРІВ
 const productsData = {
   "Плакати": [
-    { name: "Мотиваційний плакат «Never Give Up»", price: 3.49 },
-    { name: "Плакат з котиком", price: 2.32 },
-    { name: "Мінімалістичний постер «Гори»", price: 3.56 },
-    { name: "Мінімалістичний постер - Сушена трава пампаси", price: 3.27 },
-    { name: "Плакат Minecraft - Pictograft", price: 2.49 }
+    { name: "Мотиваційний плакат «Never Give Up»", price: 3.49, image: "assets/плакат - 4.jpg" },
+    { name: "Плакат з котиком", price: 2.32, image: "assets/плакат - 3.jpg" },
+    { name: "Мінімалістичний постер «Гори»", price: 3.56, image: "assets/плакат - 5.jpg" },
+    { name: "Мінімалістичний постер - Сушена трава пампаси", price: 3.27, image: "assets/плакат 6.jpg" },
+    { name: "Плакат Minecraft - Pictograft", price: 2.49, image: "assets/плакат - 2.jpg" }
   ],
   "Футболки": [
-    { name: "Футболка «I Paused My Game»", price: 15.99 },
-    { name: "Футболка з мемом «This is Fine»", price: 13.54 },
-    { name: "Оверсайз «Minimal Cat»", price: 14.79 }
+    { name: "Футболка «I Paused My Game»", price: 15.99, image: "assets/футболка - 3.jpg" },
+    { name: "Футболка з мемом «This is Fine»", price: 13.54, image: "assets/футболка - 1.jpg" },
+    { name: "Оверсайз «Minimal Cat»", price: 14.79, image: "assets/футболка - 2.jpg" }
   ],
   "Кружки": [
-    { name: "Чашка Кава завантаження", price: 5.67 },
-    { name: "Чашка з посланням", price: 4.99 }
+    { name: "Чашка Кава завантаження", price: 5.67, image: "assets/чашка - 2.jpg" },
+    { name: "Чашка з посланням", price: 4.99, image: "assets/чашка - 1.jpg" }
   ],
   "Стікери": [
-    { name: "Набір стікерів «Programmer Life»", price: 4.99 },
-    { name: "Голографічні стікери", price: 6.49 }
+    { name: "Набір стікерів", price: 1.99, image: "assets/Набір стікерів - 2.jpg" },
+    { name: "Голографічні стікери", price: 1.49, image: "assets/Набір стікерів - 1.jpg" }
   ],
   "Чохли": [
-    { name: "Чохол на iPhone «Зоряна ніч»", price: 15.99 },
-    { name: "Чохол «Rick and Morty»", price: 16.99 }
+    { name: "Чохол на iPhone «Зоряна ніч»", price: 15.99, image: "assets/chohol-1.jpg" },
+    { name: "Чохол «Rick and Morty»", price: 16.99, image: "assets/chohol-2.jpg" }
   ],
   "Постери": [
-    { name: "Постер «The Mandalorian»", price: 12.99 },
-    { name: "Музичний постер «Daft Punk»", price: 13.99 }
+    { name: "Постер «The Mandalorian»", price: 12.99, image: "assets/poster-1.jpg" },
+    { name: "Музичний постер «Daft Punk»", price: 13.99, image: "assets/poster-2.jpg" }
   ],
   "Картини": [
-    { name: "Картина «Зоряна ніч» Ван Гог", price: 39.99 },
-    { name: "Абстрактна картина «Ocean Wave»", price: 44.99 }
+    { name: "Картина «Зоряна ніч» Ван Гог", price: 39.99, image: "assets/kartyna-1.jpg" },
+    { name: "Абстрактна картина «Ocean Wave»", price: 44.99, image: "assets/kartyna-2.jpg" }
   ],
   "Подушки": [
-    { name: "Подушка «Кіт у коробці»", price: 24.99 },
-    { name: "Декоративна подушка «Геометрія»", price: 26.99 }
+    { name: "Подушка «Кіт у коробці»", price: 24.99, image: "assets/podushka-1.jpg" },
+    { name: "Декоративна подушка «Геометрія»", price: 26.99, image: "assets/podushka-2.jpg" }
   ],
   "Брелоки": [
-    { name: "Брелок «Baby Yoda»", price: 6.99 },
-    { name: "Акриловий брелок аніме", price: 5.99 }
+    { name: "Брелок «Baby Yoda»", price: 6.99, image: "assets/bre lok-1.jpg" },
+    { name: "Акриловий брелок аніме", price: 5.99, image: "assets/bre lok-2.jpg" }
   ]
 };
 
@@ -79,44 +79,31 @@ const categoryItems = document.querySelectorAll(".category-item");
 function renderProducts(category) {
   productRow.innerHTML = "";
   const products = productsData[category] || [];
-
   products.forEach(p => {
     const card = document.createElement("div");
     card.className = "product-card";
-
     card.innerHTML = `
-      <div class="product-img" style="background-image: ur[](https://picsum.photos/300/400?random=${Math.random()})"></div>
+      <div class="product-img" style="background-image: url('${p.image}')"></div>
       <div class="product-info">
         <div class="product-name">${p.name}</div>
         <p class="product-price">${p.price.toFixed(2)}$</p>
         <button class="buy-btn">Купити</button>
       </div>
     `;
-
-    // Клік по картці — відкриває сторінку товару
     card.addEventListener("click", e => {
-      if (!e.target.closest(".buy-btn")) {
-        openProductPage(p);
-      }
+      if (!e.target.closest(".buy-btn")) openProductPage(p);
     });
-
-    // Додаємо в кошик
     card.querySelector(".buy-btn").addEventListener("click", e => {
       e.stopPropagation();
       const existing = cart.find(i => i.name === p.name);
-      if (existing) {
-        existing.qty++;
-      } else {
-        cart.push({ ...p, qty: 1, checked: true });
-      }
+      if (existing) existing.qty++;
+      else cart.push({ ...p, qty: 1, checked: true });
       updateCart();
     });
-
     productRow.appendChild(card);
   });
 }
 
-// Активна категорія
 function setActiveCategory(elem) {
   categoryItems.forEach(i => i.classList.remove("active-category"));
   elem.classList.add("active-category");
@@ -173,14 +160,13 @@ function updateCart() {
   cartCount.textContent = cart.length;
   cartItemsContainer.innerHTML = "";
   let total = 0;
-
   cart.forEach((item, i) => {
     if (item.checked) total += item.price * item.qty;
     const div = document.createElement("div");
     div.className = "mini-cart__item";
     div.innerHTML = `
       <input type="checkbox" class="mini-cart__checkbox" data-index="${i}" ${item.checked ? 'checked' : ''}>
-      <div class="mini-cart__img" style="background-image: ur[](https://picsum.photos/100/100?random=${i})"></div>
+      <div class="mini-cart__img" style="background-image: url('${item.image}')"></div>
       <div class="mini-cart__info">
         <div class="mini-cart__name">${item.name}</div>
         <div class="mini-cart__price">${(item.price * item.qty).toFixed(2)} $</div>
@@ -189,11 +175,9 @@ function updateCart() {
     `;
     cartItemsContainer.appendChild(div);
   });
-
   cartTotalEl.textContent = total.toFixed(2) + " $";
 }
 
-// Видалення товару — без закриття кошика
 cartItemsContainer.addEventListener("click", e => {
   if (e.target.classList.contains("mini-cart__remove")) {
     e.stopPropagation();
@@ -217,9 +201,8 @@ const productPage = document.getElementById("productPage");
 function openProductPage(product) {
   document.getElementById("pageTitle").textContent = product.name;
   document.getElementById("pagePrice").textContent = product.price.toFixed(2) + " $";
-  document.getElementById("mainImg").style.backgroundImage = `ur[](https://picsum.photos/800/1000?random=${Date.now()})`;
+  document.getElementById("mainImg").style.backgroundImage = `url('${product.image}')`;
 
-  // Схожі товари
   const similar = document.getElementById("similarProducts");
   similar.innerHTML = "";
   const all = Object.values(productsData).flat().filter(p => p.name !== product.name);
@@ -228,15 +211,13 @@ function openProductPage(product) {
     const c = document.createElement("div");
     c.className = "product-card";
     c.innerHTML = `
-      <div class="product-img" style="background-image: ur[](https://picsum.photos/300/400?random=${Math.random()})"></div>
+      <div class="product-img" style="background-image: url('${p.image}')"></div>
       <div class="product-info">
         <div class="product-name">${p.name}</div>
         <p class="product-price">${p.price.toFixed(2)}$</p>
       </div>
     `;
-    c.addEventListener("click", e => {
-      if (!e.target.closest(".buy-btn")) openProductPage(p);
-    });
+    c.addEventListener("click", () => openProductPage(p));
     similar.appendChild(c);
   });
 
@@ -244,7 +225,6 @@ function openProductPage(product) {
   document.body.style.overflow = "hidden";
 }
 
-// Закриття сторінки товару
 document.querySelector(".product-page__close").addEventListener("click", () => {
   productPage.classList.remove("active");
   document.body.style.overflow = "";
@@ -264,12 +244,13 @@ document.addEventListener("keydown", e => {
   }
 });
 
-// Додати з повної сторінки в кошик
 document.getElementById("addToCartFull").addEventListener("click", () => {
   const name = document.getElementById("pageTitle").textContent;
   const price = parseFloat(document.getElementById("pagePrice").textContent);
+  const image = document.getElementById("mainImg").style.backgroundImage.slice(5, -2);
   const existing = cart.find(i => i.name === name);
-  if (existing) existing.qty++; else cart.push({name, price, qty:1, checked:true});
+  if (existing) existing.qty++;
+  else cart.push({ name, price, image, qty: 1, checked: true });
   updateCart();
 });
 
@@ -282,7 +263,6 @@ const checkoutSubtotal = document.getElementById("checkoutSubtotal");
 const checkoutGrandTotal = document.getElementById("checkoutGrandTotal");
 const submitOrderBtn = document.querySelector(".submit-order-btn");
 
-// Відкрити модалку
 checkoutBtn.addEventListener("click", () => {
   if (cart.filter(item => item.checked).length === 0) {
     alert("Оберіть товари для замовлення!");
@@ -293,7 +273,6 @@ checkoutBtn.addEventListener("click", () => {
   document.body.style.overflow = "hidden";
 });
 
-// Закрити модалку
 checkoutClose.addEventListener("click", () => {
   checkoutModal.classList.remove("active");
   document.body.style.overflow = "";
@@ -311,7 +290,6 @@ document.addEventListener("keydown", e => {
   }
 });
 
-// Оновити сумарі в чекауті
 function updateCheckoutSummary() {
   checkoutItemsContainer.innerHTML = "";
   let total = 0;
@@ -319,18 +297,14 @@ function updateCheckoutSummary() {
   checkedItems.forEach(item => {
     const div = document.createElement("div");
     div.className = "checkout-item";
-    div.innerHTML = `
-      <span>${item.name} x ${item.qty}</span>
-      <span>${(item.price * item.qty).toFixed(2)} $</span>
-    `;
+    div.innerHTML = `<span>${item.name} x ${item.qty}</span><span>${(item.price * item.qty).toFixed(2)} $</span>`;
     checkoutItemsContainer.appendChild(div);
     total += item.price * item.qty;
   });
   checkoutSubtotal.textContent = total.toFixed(2) + " $";
-  checkoutGrandTotal.textContent = total.toFixed(2) + " $"; // Доставка не обчислена, просто текст
+  checkoutGrandTotal.textContent = total.toFixed(2) + " $";
 }
 
-// Логіка для оплати: показ суб-опцій
 const paymentRadios = document.querySelectorAll('input[name="payment"]');
 const nonCashOptions = document.querySelector(".non-cash-options");
 paymentRadios.forEach(radio => {
@@ -339,7 +313,6 @@ paymentRadios.forEach(radio => {
   });
 });
 
-// Підтвердити замовлення (просто алерт для прикладу)
 submitOrderBtn.addEventListener("click", () => {
   const fullName = document.getElementById("fullName").value;
   const phone = document.getElementById("phone").value;
@@ -363,12 +336,99 @@ submitOrderBtn.addEventListener("click", () => {
   }
 
   alert(`Замовлення підтверджено!\nПІБ: ${fullName}\nТелефон: ${phone}\nEmail: ${email}\nМісто: ${city}\nВідділення: ${postOffice}\nОплата: ${payment}${nonCashType ? ` (${nonCashType})` : ""}`);
-  // Очистити кошик або надіслати на сервер
   cart = cart.filter(item => !item.checked);
   updateCart();
   checkoutModal.classList.remove("active");
   document.body.style.overflow = "";
 });
 
-// Ініціалізація
+// === НОВА ФУНКЦІЯ: РЕДАКТОР ===
+let savedDesignDataURL = null;
+
+const editorModal = document.getElementById("editorModal");
+const customProductModal = document.getElementById("customProductModal");
+const openEditorBtn = document.querySelector(".js-editor-open");
+const closeEditorBtn = document.querySelector(".js-editor-close");
+const closeCustomBtn = document.querySelector(".js-custom-close");
+
+openEditorBtn.addEventListener("click", e => {
+  e.preventDefault();
+  editorModal.classList.add("active");
+  initCanvas();
+});
+
+closeEditorBtn.addEventListener("click", () => editorModal.classList.remove("active"));
+editorModal.addEventListener("click", e => {
+  if (e.target === editorModal) editorModal.classList.remove("active");
+});
+
+function initCanvas() {
+  const canvas = document.getElementById("designCanvas");
+  const ctx = canvas.getContext("2d");
+  let drawing = false;
+
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.strokeStyle = "#526075";
+  ctx.lineWidth = 5;
+  ctx.lineCap = "round";
+
+  canvas.addEventListener("mousedown", () => drawing = true);
+  canvas.addEventListener("mouseup", () => drawing = false);
+  canvas.addEventListener("mouseout", () => drawing = false);
+
+  canvas.addEventListener("mousemove", e => {
+    if (!drawing) return;
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(e.offsetX, e.offsetY);
+  });
+
+  document.getElementById("clearCanvas").onclick = () => {
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+  };
+}
+
+document.getElementById("saveDesign").addEventListener("click", () => {
+  const canvas = document.getElementById("designCanvas");
+  savedDesignDataURL = canvas.toDataURL("image/png");
+
+  alert("Збережено!");
+
+  document.getElementById("savedDesignPreview").src = savedDesignDataURL;
+  editorModal.classList.remove("active");
+  customProductModal.classList.add("active");
+});
+
+closeCustomBtn.addEventListener("click", () => customProductModal.classList.remove("active"));
+customProductModal.addEventListener("click", e => {
+  if (e.target === customProductModal) customProductModal.classList.remove("active");
+});
+
+document.getElementById("addCustomToCart").addEventListener("click", () => {
+  const customItem = {
+    name: "Кастомний дизайн (ваш малюнок)",
+    price: 29.99,
+    image: savedDesignDataURL,
+    qty: 1,
+    checked: true
+  };
+
+  const existing = cart.find(i => i.name === customItem.name);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push(customItem);
+  }
+
+  updateCart();
+  customProductModal.classList.remove("active");
+  alert("Кастомний товар додано в кошик!");
+});
+
+// ІНІЦІАЛІЗАЦІЯ
 updateCart();
+
